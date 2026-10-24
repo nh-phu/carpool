@@ -1,0 +1,189 @@
+.make-trip-page {
+  width: min(100% - 2rem, 680px);
+  margin: 2rem auto 4rem;
+  color: #1f2937;
+}
+
+.make-trip-heading {
+  margin-bottom: 2rem;
+}
+
+.make-trip-heading .eyebrow {
+  margin-bottom: 0.75rem;
+  color: #2563eb;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.make-trip-heading h1 {
+  margin: 0 0 0.75rem;
+  color: #111827;
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 750;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+}
+
+.make-trip-heading > p:last-child {
+  margin: 0;
+  color: #6b7280;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.make-trip-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 2rem;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgb(15 23 42 / 5%);
+}
+
+.make-trip-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  color: #374151;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.make-trip-form input {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 0.85rem 0.95rem;
+  color: #111827;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 400;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.make-trip-form input::placeholder {
+  color: #9ca3af;
+}
+
+.make-trip-form input:hover {
+  border-color: #9ca3af;
+}
+
+.make-trip-form input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgb(59 130 246 / 15%);
+}
+
+.make-trip-form input:invalid:not(:placeholder-shown) {
+  border-color: #ef4444;
+}
+
+.make-trip-form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.make-trip-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  margin-top: 0.25rem;
+  padding: 0.85rem 1.25rem;
+  color: #fff;
+  background: #2563eb;
+  border: 1px solid #2563eb;
+  border-radius: 9px;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 650;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.make-trip-submit:hover:not(:disabled) {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+}
+
+.make-trip-submit:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.make-trip-submit:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 3px;
+}
+
+.make-trip-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.make-trip-error,
+.make-trip-success {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.make-trip-error {
+  color: #b91c1c;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+}
+
+.make-trip-success {
+  color: #166534;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+}
+
+.make-trip-page-wrapper {
+  min-height: 60vh;
+  padding: 1.5rem 0 4rem;
+  background: #f9fafb;
+}
+
+.make-trip-page-wrapper > .login-back {
+  display: block;
+  width: calc(100% - 4rem);
+  max-width: 1280px;
+  box-sizing: border-box;
+  margin: 0 auto 2rem;
+  padding: 0.5rem 0;
+  color: #64748b;
+  background: transparent;
+  border: none;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.make-trip-page-wrapper > .login-back:hover {
+  color: #2563eb;
+}
+
+@media (max-width: 540px) {
+  .make-trip-page-wrapper > .login-back {
+    width: calc(100% - 2rem);
+  }
+}
