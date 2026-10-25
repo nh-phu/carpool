@@ -58,7 +58,7 @@ public class UserController {
         User User = userService.create(req);
 
         return ResponseEntity
-                .created(URI.create("/api/Users/" + User.getId()))
+                .created(URI.create("/api/users/" + User.getId()))
                 .body(User);
     }
 }

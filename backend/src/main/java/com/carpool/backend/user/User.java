@@ -8,16 +8,16 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
+    @Column(nullable = false)
     private String name;
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String phoneNumber;
 
     protected User() {
     }
-    public User(String name, String email) {
+    public User(String name, String phoneNumber) {
         this.name = name;
-        this.phoneNumber = email;
+        this.phoneNumber = phoneNumber;
     }
 
     public Long getId() {
