@@ -4,7 +4,8 @@ import TripDetailsModal from './components/TripDetailsModal'
 import BookingModal from './components/BookingModal'
 import Login from './components/Login'
 import MyAccount from './components/MyAccount'
-import type { AppUser } from './components/Login'
+import type { User } from './components/Login'
+import Signup from './components/Signup'
 import MakeTrip from './components/MakeTrip'
 import type { Trip } from './types/Trip'
 import './App.css'
@@ -16,9 +17,9 @@ function App() {
   const [selectedTripId, setSelectedTripId] = useState<number | null>(null)
   const [bookingTrip, setBookingTrip] = useState<Trip | null>(null)
 
-  const [user, setUser] = useState<AppUser | null>(null)
+  const [user, setUser] = useState<User | null>(null)
   const [currentPage, setCurrentPage] = useState<
-    'home' | 'login' | 'account' | 'make-trip'
+    'home' | 'login' | 'signup' | 'account' | 'make-trip'
   >('home')
   const [profileMenuOpen, setProfileMenuOpen] = useState(false)
 
@@ -73,7 +74,7 @@ function App() {
     }
   }
 
-  function handleLogin(loggedInUser: AppUser) {
+  function handleLogin(loggedInUser: User) {
     setUser(loggedInUser)
     setCurrentPage('home')
     setProfileMenuOpen(false)
@@ -184,6 +185,15 @@ function App() {
         <Login
           onLogin={handleLogin}
           onBack={() => setCurrentPage('home')}
+          onGoToSignup={() => setCurrentPage('signup')}
+        />
+      )}
+
+      {currentPage === 'signup' && (
+        <Signup
+          onSignup={handleLogin}
+          onBack={() => setCurrentPage('home')}
+          onGoToLogin={() => setCurrentPage('login')}
         />
       )}
 

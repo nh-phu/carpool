@@ -1,18 +1,19 @@
 import { useState } from 'react'
 import './Login.css'
 
-export interface AppUser {
+export interface User {
   id: number
   name: string
   phoneNumber: string
 }
 
 interface LoginPageProps {
-  onLogin: (user: AppUser) => void
+  onLogin: (user: User) => void
   onBack: () => void
+  onGoToSignup: () => void
 }
 
-export default function LoginPage({ onLogin, onBack }: LoginPageProps) {
+export default function LoginPage({ onLogin, onBack, onGoToSignup }: LoginPageProps) {
   const [phoneNumber, setPhoneNumber] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -29,7 +30,7 @@ export default function LoginPage({ onLogin, onBack }: LoginPageProps) {
         throw new Error('Could not connect to the server. Try again.')
       }
 
-      const users: AppUser[] = await response.json()
+      const users: User[] = await response.json()
       const normalizedPhone = phoneNumber.trim()
 
       const user = users.find(
@@ -90,7 +91,7 @@ export default function LoginPage({ onLogin, onBack }: LoginPageProps) {
 
         <p className="login-signup">
           New to carpool?{' '}
-          <button type="button" onClick={() => setError('Account creation is coming soon.')}>
+          <button type="button" onClick={onGoToSignup}>
             Make an account
           </button>
         </p>

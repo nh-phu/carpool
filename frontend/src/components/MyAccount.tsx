@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
-import type { AppUser } from './Login'
+import type { User } from './Login'
 import type { Trip } from '../types/Trip'
 import MyBookings from './MyBookings'
 import TripDetailsModal from './TripDetailsModal'
 import './MyAccount.css'
 
 interface MyAccountProps {
-  user: AppUser
+  user: User
 }
 
 type AccountTab = 'bookings' | 'trips'
