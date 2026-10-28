@@ -16,7 +16,6 @@ services:
       retries: 10
 
   backend:
-    build: ./backend
     container_name: carpool-backend
     restart: always
     environment:
@@ -30,7 +29,6 @@ services:
         condition: service_healthy
 
   frontend:
-    build: ./frontend
     container_name: carpool-frontend
     restart: always
     ports:
