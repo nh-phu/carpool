@@ -1,0 +1,42 @@
+services:
+  db:
+    image: postgis/postgis:17-3.5
+    container_name: carpool-db
+    restart: always
+    environment:
+      POSTGRES_DB: carpool
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - carpool_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d carpool"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./backend
+    container_name: carpool-backend
+    restart: always
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/carpool
+      SPRING_DATASOURCE_USERNAME: ${DB_USER}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+      ORS_BASEURL: https://api.openrouteservice.org
+      ORS_APIKEY: ${ORS_API_KEY}
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build: ./frontend
+    container_name: carpool-frontend
+    restart: always
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  carpool_data:
