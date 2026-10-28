@@ -16,6 +16,7 @@ services:
       retries: 10
 
   backend:
+    image: phu06/carpool-backend:latest
     container_name: carpool-backend
     restart: always
     environment:
@@ -29,6 +30,7 @@ services:
         condition: service_healthy
 
   frontend:
+    image: phu06/carpool-frontend:latest
     container_name: carpool-frontend
     restart: always
     ports:
