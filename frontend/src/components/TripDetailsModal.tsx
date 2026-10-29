@@ -4,6 +4,7 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 import type { LineString } from 'geojson'
 import type { Trip } from '../types/Trip'
 import type { TripRoute } from '../types/TripRoute'
+import { API_BASE } from '../api'
 import './TripDetailsModal.css'
 
 interface TripDetailsModalProps {
@@ -35,7 +36,7 @@ export default function TripDetailsModal({
 
       try {
         const response = await fetch(
-          `/api/trips/${trip.id}/route`,
+          `${API_BASE}/trips/${trip.id}/route`,
           { signal: controller.signal },
         )
 

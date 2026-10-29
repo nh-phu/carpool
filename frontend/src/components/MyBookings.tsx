@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { Booking } from '../types/Booking'
 import type { Trip } from '../types/Trip'
+import { API_BASE } from '../api'
 import TripDetailsModal from './TripDetailsModal'
 import './MyBookings.css'
 
@@ -45,7 +46,7 @@ export default function MyBookings({ passengerId }: MyBookingsProps) {
     setError('')
 
     try {
-      const response = await fetch(`/api/bookings/${bookingId}`, {
+      const response = await fetch(`${API_BASE}/bookings/${bookingId}`, {
         method: 'DELETE',
       })
 
@@ -73,7 +74,7 @@ export default function MyBookings({ passengerId }: MyBookingsProps) {
 
       try {
         const response = await fetch(
-          `/api/bookings/passenger/${passengerId}`,
+          `${API_BASE}/bookings/passenger/${passengerId}`,
           { signal: controller.signal },
         )
 
@@ -87,7 +88,7 @@ export default function MyBookings({ passengerId }: MyBookingsProps) {
           bookings.map(async (booking) => {
             try {
               const tripResponse = await fetch(
-                `/api/trips/${booking.tripId}`,
+                `${API_BASE}/trips/${booking.tripId}`,
                 { signal: controller.signal },
               )
 

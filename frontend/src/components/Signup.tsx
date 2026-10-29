@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './Signup.css'
+import { API_BASE } from '../api'
 import type { User } from './Login'
 
 interface SignupProps {
@@ -25,7 +26,7 @@ export default function Signup({
     setLoading(true)
 
     try {
-      const response = await fetch('/api/users', {
+      const response = await fetch(`${API_BASE}/users`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { API_BASE } from '../api'
 import './Login.css'
 
 export interface User {
@@ -24,7 +25,7 @@ export default function LoginPage({ onLogin, onBack, onGoToSignup }: LoginPagePr
     setLoading(true)
 
     try {
-      const response = await fetch('/api/users')
+      const response = await fetch(`${API_BASE}/users`)
 
       if (!response.ok) {
         throw new Error('Could not connect to the server. Try again.')

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { User } from './Login'
 import type { Trip } from '../types/Trip'
+import { API_BASE } from '../api'
 import MyBookings from './MyBookings'
 import TripDetailsModal from './TripDetailsModal'
 import './MyAccount.css'
@@ -44,7 +45,7 @@ export default function MyAccount({ user }: MyAccountProps) {
       setTripsError('')
 
       try {
-        const response = await fetch('/api/trips', {
+        const response = await fetch(`${API_BASE}/trips`, {
           signal: controller.signal,
         })
 

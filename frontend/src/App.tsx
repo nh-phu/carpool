@@ -8,6 +8,7 @@ import type { User } from './components/Login'
 import Signup from './components/Signup'
 import MakeTrip from './components/MakeTrip'
 import type { Trip } from './types/Trip'
+import { API_BASE } from './api'
 import './App.css'
 
 function App() {
@@ -57,7 +58,7 @@ function App() {
         params.set('date', date)
       }
 
-      const response = await fetch(`/api/trips/nearby?${params}`)
+      const response = await fetch(`${API_BASE}/trips/nearby?${params}`)
 
       if (!response.ok) {
         throw new Error('Failed to search for trips.')

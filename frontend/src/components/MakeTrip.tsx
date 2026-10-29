@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { API_BASE } from '../api'
 import './MakeTrip.css'
 
 interface MakeTripProps {
@@ -42,7 +43,7 @@ export default function MakeTrip({ driverId, onTripCreated }: MakeTripProps) {
     setLoading(true)
 
     try {
-      const response = await fetch('/api/trips', {
+      const response = await fetch(`${API_BASE}/trips`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

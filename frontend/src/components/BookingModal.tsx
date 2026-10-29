@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import type { Trip } from '../types/Trip'
+import { API_BASE } from '../api'
 import './BookingModal.css'
 
 interface BookingModalProps {
@@ -57,7 +58,7 @@ export default function BookingModal({
     setLoading(true)
 
     try {
-      const response = await fetch('/api/bookings', {
+      const response = await fetch(`${API_BASE}/bookings`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
