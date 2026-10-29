@@ -3,7 +3,7 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  // base: '/carpool/',
+  base: '/carpool/',
   plugins: [react()],
   server: {
       proxy: {
